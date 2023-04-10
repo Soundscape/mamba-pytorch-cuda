@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  app:
+    build: 
+      context: ..
+      dockerfile: Dockerfile
+    volumes:
+      - ../..:/workspaces:cached
+      - type: bind
+        source: ../conda/pkgs
+        target: /opt/conda/pkgs
+        consistency: cached
+      - type: bind
+        source: ../conda/lib
+        target: /opt/conda/lib
+        consistency: cached
+
+    command: sleep infinity
+    
+    extra_hosts:
+      - host.docker.internal:host-gateway
+
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]

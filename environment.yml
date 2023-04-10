@@ -1,0 +1,17 @@
+name: base
+channels:
+  - pytorch
+  - nvidia
+  - mosaicml
+  - huggingface
+  - conda-forge
+dependencies:
+  - python=3.10.10
+  - pip=23.0.1
+  - git=2.40.0
+
+  - pytorch=2.0.0
+  - torchvision=0.15.0
+  - transformers=4.27.4
+  - onnx=1.13.1
+  - onnxruntime=1.14.1
